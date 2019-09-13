@@ -132,7 +132,7 @@
         <kctl name="Audio_MIC1_Mode_Select" value="DCCMODE" />>
     </path>
     <path name="Mic1TypeDMICMode" value="setting">
-        <kctl name="Audio_MIC1_Mode_Select" value="DCCMODE" />>
+        <kctl name="Audio_MIC1_Mode_Select" value="DMIC" />>
     </path>         
     <path name="Mic1TypeDCCECMDIFFMode" value="setting">
         <kctl name="Audio_MIC1_Mode_Select" value="DCCECMDIFFMODE" />>
@@ -147,7 +147,7 @@
         <kctl name="Audio_MIC2_Mode_Select" value="DCCMODE" />>
     </path>
     <path name="Mic2TypeDMICMode" value="setting">
-        <kctl name="Audio_MIC2_Mode_Select" value="DCCMODE" />>
+        <kctl name="Audio_MIC2_Mode_Select" value="DMIC" />>
     </path>         
     <path name="Mic2TypeDCCECMDIFFMode" value="setting">
         <kctl name="Audio_MIC2_Mode_Select" value="DCCECMDIFFMODE" />>
@@ -162,7 +162,7 @@
         <kctl name="Audio_MIC3_Mode_Select" value="DCCMODE" />>
     </path>
     <path name="Mic3TypeDMICMode" value="setting">
-        <kctl name="Audio_MIC3_Mode_Select" value="DCCMODE" />>
+        <kctl name="Audio_MIC3_Mode_Select" value="DMIC" />>
     </path>         
     <path name="Mic3TypeDCCECMDIFFMode" value="setting">
         <kctl name="Audio_MIC3_Mode_Select" value="DCCECMDIFFMODE" />>
@@ -177,7 +177,7 @@
         <kctl name="Audio_MIC4_Mode_Select" value="DCCMODE" />>
     </path>
     <path name="Mic4TypeDMICMode" value="setting">
-        <kctl name="Audio_MIC4_Mode_Select" value="DCCMODE" />>
+        <kctl name="Audio_MIC4_Mode_Select" value="DMIC" />>
     </path>         
     <path name="Mic4TypeDCCECMDIFFMode" value="setting">
         <kctl name="Audio_MIC4_Mode_Select" value="DCCECMDIFFMODE" />>
