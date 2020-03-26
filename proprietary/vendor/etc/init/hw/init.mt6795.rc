@@ -12,6 +12,10 @@ on init
     chown root system /dev/kmsg
     chmod 0660 /dev/kmsg
 
+# change lk_env permission
+    chown root system /proc/lk_env
+    chmod 0660 /proc/lk_env
+
 on fs
     mount_all /vendor/etc/fstab.mt6795
 
@@ -23,6 +27,9 @@ on late-fs
     write /sys/block/mmcblk0/queue/nr_requests 256
 
 on post-fs
+# Internal storage
+    symlink /sdcard /storage/sdcard0
+
 # Protect
     chown system system /protect_f
     chmod 0770 /protect_f
@@ -45,6 +52,7 @@ on post-fs-data
     mkdir /data/gps_mnl 0771 gps system
     mkdir /data/misc/gps 0770 gps system
     mkdir /data/agps_supl 0771 gps system
+    mkdir /data/vendor/gps 0770 gps system
     chown gps gps /sys/class/gpsdrv/gps/pwrctl
     chown gps gps /sys/class/gpsdrv/gps/suspend
     chown gps gps /sys/class/gpsdrv/gps/state
@@ -65,10 +73,12 @@ on post-fs-data
     chmod 0660 /dev/gyroscope
     chmod 0660 /dev/gsensor
     chmod 0660 /dev/als_ps
+    chmod 0660 /dev/aal_als
     chown system system /dev/gyroscope
     chown system system /dev/hwmsensor
     chown system system /dev/gsensor
     chown system system /dev/als_ps
+    chown system system /dev/aal_als
 
     chmod 0660 /sys/class/misc/m_acc_misc/accenablenodata
     chmod 0660 /sys/class/misc/m_acc_misc/accactive
@@ -189,10 +199,15 @@ on post-fs-data
 
 # AGPS
     restorecon_recursive /data/misc/gps
+    restorecon_recursive /data/vendor/gps
 
-# BT/FM/GPS
+# /dev/ttyMT2 for Connectivity BT/FM/GPS usage
     chmod 0660 /dev/ttyMT2
     chown system system /dev/ttyMT2
+
+#/dev/ttyMT1 for GPS 3337 usage
+    chmod 0660 /dev/ttyMT1
+    chown system system /dev/ttyMT1
 
 # Thermal
     mkdir /data/vendor/.tp 0775 system system
@@ -240,6 +255,14 @@ on boot
     write /dev/cpuset/system-background/cpus 0-7
 
     write /proc/sys/vm/dirty_writeback_centisecs 300
+
+# Screen brightness
+    chmod 0664 /sys/class/leds/lcd-backlight/brightness
+    chown system system /sys/class/leds/lcd-backlight/brightness
+
+# Buttons backlight
+    chmod 0664 /sys/class/leds/button-backlight/brightness
+    chown system system /sys/class/leds/button-backlight/brightness
 
 # Leds
     chown system system /sys/class/leds/red/brightness
@@ -313,3 +336,56 @@ on property:sys.boot_completed=1
     write /sys/block/mmcblk0/queue/read_ahead_kb 128
     write /sys/block/mmcblk0/queue/nr_requests 128
     write /sys/block/mmcblk0/queue/iostats 1
+
+####### JUST SOME ADD ON FROM OLD TREE ##############
+#######     CHECK THIS FOR ANY BUGS    ##############
+
+# Boot info
+    chmod 0664 /proc/bootprof
+    chown system system /proc/bootprof
+
+# BATTERY proc
+    chown radio system /proc/mtk_battery_cmd/current_cmd
+    chown radio system /proc/mtk_battery_cmd/discharging_cmd
+    chown radio system /proc/mtk_battery_cmd/battery_cmd
+    chmod 0664 /proc/mtk_battery_cmd/current_cmd
+    chmod 0664 /proc/mtk_battery_cmd/discharging_cmd
+    chmod 0664 /proc/mtk_battery_cmd/battery_cmd
+
+# BT relayer mode used VCOM
+    chmod 0660 /dev/ttyGS2
+    chown bluetooth bluetooth /dev/ttyGS2
+
+#Charging Battery
+    chown radio radio /sys/devices/platform/battery/Charging_CallState
+
+#EM eint
+    #chown root diag /sys/bus/platform/drivers/eint/current_eint
+
+#pmu
+    chown root radio /sys/devices/platform/mt-pmic/pmic_access
+    chmod 0664 /sys/devices/platform/mt-pmic/pmic_access
+
+# Display
+    chmod 0660 /dev/graphics/fb0
+    chown system graphics /dev/graphics/fb0
+
+# Perfservice
+    chown system system /sys/devices/system/cpu/cpufreq/hotplug/cpu_num_base
+    chmod 0666 /sys/devices/system/cpu/cpufreq/hotplug/cpu_num_base
+    chown system system /proc/hps/num_base_perf_serv
+    chmod 0666 /proc/hps/num_base_perf_serv
+    chown system system /proc/hps/num_limit_power_serv
+    chmod 0666 /proc/hps/num_limit_power_serv
+    chown system system /proc/hps/rush_boost_enabled
+    chmod 0666 /proc/hps/rush_boost_enabled
+    chown system system /proc/cpufreq/cpufreq_limited_by_hevc
+    chmod 0666 /proc/cpufreq/cpufreq_limited_by_hevc
+    chown system system /proc/cpufreq/cpufreq_limited_max_freq_by_user
+    chmod 0666 /proc/cpufreq/cpufreq_limited_max_freq_by_user
+    chown system system /d/ged/hal/total_gpu_freq_level_count
+    chmod 0666 /d/ged/hal/total_gpu_freq_level_count
+    chown system system /d/ged/hal/custom_boost_gpu_freq
+    chmod 0666 /d/ged/hal/custom_boost_gpu_freq
+    chown system system /d/ged/hal/custom_upbound_gpu_freq
+    chmod 0666 /d/ged/hal/custom_upbound_gpu_freq

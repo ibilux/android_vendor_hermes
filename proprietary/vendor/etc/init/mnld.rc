@@ -1,5 +1,5 @@
 service mnld /vendor/xbin/mnld
     class main
     user gps
-    group gps inet misc sdcard_rw sdcard_r media_rw system
+    group gps inet misc sdcard_rw sdcard_r media_rw system radio
     socket mnld stream 660 gps system
