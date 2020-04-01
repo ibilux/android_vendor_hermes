@@ -2,4 +2,3 @@ service wmt_launcher /vendor/bin/6620_launcher -m 4 -p /vendor/etc/firmware/
     class core
     user root
     group system
-    seclabel u:r:mtk_6620_launcher:s0

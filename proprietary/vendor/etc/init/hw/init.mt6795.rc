@@ -198,7 +198,8 @@ on post-fs-data
     chown system media /dev/mtk_sched
 
 # AGPS
-    #restorecon_recursive /data/misc/gps
+    restorecon_recursive /data/misc/gps
+    restorecon_recursive /data/vendor/gps
 
 # /dev/ttyMT2 for Connectivity BT/FM/GPS usage
     chmod 0660 /dev/ttyMT2
