@@ -1,5 +1,0 @@
-service charger /charger
-    class charger
-    critical
-    group system
-    seclabel u:r:charger:s0

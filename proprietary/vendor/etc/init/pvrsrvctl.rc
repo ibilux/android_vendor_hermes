@@ -1,5 +1,0 @@
-service pvrsrvctl /vendor/bin/pvrsrvctl --no-module --start
-    class main
-    user root
-    group root
-    oneshot

@@ -1,5 +1,0 @@
-service ccci_fsd /vendor/bin/ccci_fsd 0
-    class core
-    user root
-    group radio system
-    oneshot
