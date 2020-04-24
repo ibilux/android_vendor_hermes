@@ -2,4 +2,5 @@ service mnld /vendor/xbin/mnld
     class main
     user gps
     group gps inet misc sdcard_rw sdcard_r media_rw system radio
+    setenv LD_PRELOAD "libshim_mutexdestroy.so"
     socket mnld stream 660 gps system
