@@ -324,7 +324,28 @@ on boot
     chown shell system /proc/driver/wmt_aee
     chown shell system /proc/driver/wmt_dbg
 
+# Graphic
+service guiext-server /vendor/bin/guiext-server
+    class main
+    user system
+    group system graphics
+
+service gas_srv /vendor/bin/gas_srv
+    class core
+    user system
+    group system
+    disabled
+
+service ged_srv /vendor/bin/ged_srv
+    class core
+    user system
+    group system
+    disabled
+
 on property:sys.boot_completed=1
+    start gas_srv
+    start ged_srv
+
 # end boot time tune
     write /dev/cpuset/top-app/cpus 0-7
     write /dev/cpuset/foreground/cpus 0-5
