@@ -300,7 +300,7 @@ on boot
     write /proc/gpufreq/gpufreq_input_boost 0
     write /proc/hps/input_boost_enabled 0
     write /proc/hps/rush_boost_enabled 0
-    write /proc/hps/num_limit_thermal 4
+    #write /proc/hps/num_limit_thermal 4
     write /proc/hps/up_threshold 99
     write /proc/hps/down_threshold 87
 
