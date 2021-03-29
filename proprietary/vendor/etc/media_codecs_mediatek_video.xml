@@ -65,7 +65,7 @@
             <Feature name="adaptive-playback"/>
             <Limit name="concurrent-instances" max="16" />
         </MediaCodec>
-        <MediaCodec name="OMX.MTK.VIDEO.DECODER.VP9" type="video/x-vnd.on2.vp9" >
+        <!-- <MediaCodec name="OMX.MTK.VIDEO.DECODER.VP9" type="video/x-vnd.on2.vp9" >
             <Limit name="size" min="16x16" max="1920x1088" />
             <Quirk name="requires-allocate-on-input-ports" />
             <Quirk name="requires-allocate-on-output-ports" />
@@ -74,7 +74,7 @@
             <Limit name="block-count" range="1-8160" />
             <Limit name="blocks-per-second" range="1-244800" />
             <Limit name="concurrent-instances" max="8" />
-        </MediaCodec>
+        </MediaCodec> -->
         <MediaCodec name="OMX.MTK.VIDEO.DECODER.DIVX" type="video/divx" >
             <Limit name="size" min="16x16" max="1920x1088" />
             <Quirk name="requires-allocate-on-input-ports" />
