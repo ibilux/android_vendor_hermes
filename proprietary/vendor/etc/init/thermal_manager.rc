@@ -3,3 +3,15 @@ service thermal_manager /vendor/bin/thermal_manager
     user root
     group system
     oneshot
+
+service thermal_perfmode /system/bin/thermal_manager /vendor/etc/.tp/thermal.off.conf
+    user system
+    group system
+    oneshot
+    disabled
+
+service thermal_normalmode /system/bin/thermal_manager /vendor/etc/.tp/thermal.conf
+    user system
+    group system
+    oneshot
+    disabled
