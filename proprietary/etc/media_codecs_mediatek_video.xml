@@ -145,7 +145,7 @@
             <Limit name="concurrent-instances" max="16" />
         </MediaCodec>
         <MediaCodec name="OMX.MTK.VIDEO.ENCODER.HEVC" type="video/hevc" >
-            <Limit name="size" min="160x128" max="1920x1080" />
+            <Limit name="size" min="160x128" max="3840x2176" />
             <Limit name="alignment" value="16x16" />
             <Limit name="block-size" value="16x16" />
             <Quirk name="requires-allocate-on-input-ports" />
